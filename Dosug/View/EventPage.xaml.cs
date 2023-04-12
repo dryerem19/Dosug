@@ -1,0 +1,47 @@
+﻿using Dosug.Entities;
+using Dosug.Infrastructure;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace Dosug.View
+{
+    /// <summary>
+    /// Логика взаимодействия для EventPage.xaml
+    /// </summary>
+    public partial class EventPage : Page
+    {
+        public EventPage()
+        {
+            InitializeComponent();
+            Update();
+        }
+
+        public void Update()
+        {
+            List<Event>? events = null;
+            Helper.SafeInvoke(() =>
+            {
+                events = Helper.Database.Event.ToList();
+            });
+
+            if (events == null)
+            {
+                return;
+            }
+
+            EventList.ItemsSource = events;
+        }
+    }
+}

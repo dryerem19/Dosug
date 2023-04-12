@@ -1,0 +1,45 @@
+﻿<Window x:Class="Dosug.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Dosug"
+        mc:Ignorable="d"
+        Title='Информационная система "Досуг"' MinWidth="800" MinHeight="600" FontFamily="Comis Sans MS">
+    
+    <DockPanel LastChildFill="True">
+        <Grid DockPanel.Dock="Top" Height="80"
+              Background="#FFE7FABF">
+            <Image Source="/Resources/events_logo.png"
+                   HorizontalAlignment="Left"
+                   Margin="10, 10, 0, 10" />
+            <StackPanel Orientation="Vertical"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                <Label Name="PageTitle"
+                       FontSize="24" 
+                       HorizontalAlignment="Center"/>
+                <Label Height="20" />
+                <Label Name="RoleTitle"
+                       FontSize="16" />
+            </StackPanel>
+            <Button Name="ExitBtn"
+                    Content="Выход"
+                    MinWidth="100"
+                    Margin="0, 20, 10, 20"
+                    HorizontalAlignment="Right"
+                    Visibility="Visible"
+                    Click="OnExitBtnClick" />
+            <Button Name="BackBtn"
+                    Content="Назад"
+                    MinWidth="100"
+                    Margin="0, 20, 10, 20"
+                    HorizontalAlignment="Right"
+                    Visibility="Collapsed"
+                    Click="OnBackBtnClick" />
+        </Grid>
+        <Frame Name="NavFrame" NavigationUIVisibility="Hidden"
+               ContentRendered="OnFrameRendered"
+               Navigated="OnFrameNavigated" />
+    </DockPanel>
+</Window>
